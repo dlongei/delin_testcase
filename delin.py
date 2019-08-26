@@ -60,11 +60,6 @@ while True:
     if driver.current_url == 'http://60.191.90.42:8001/Home/AdminLTE':
         print('登录成功！')
         break
-    else:
-        driver.find_element_by_xpath('//*[@id="login_verifycode"]').click()
-
-
-
 
     '''
     # 获取cookie，并把cookie转化为字符串格式
