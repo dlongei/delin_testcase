@@ -14,11 +14,12 @@ driver.implicitly_wait(30)
 driver.find_element_by_xpath('//*[@id="username"]').send_keys('nifei')
 
 driver.find_element_by_xpath('//*[@id="password"]').send_keys('88861777')
-
+time.sleep(1)
 while True:
     driver.find_element_by_xpath('//*[@id="verifycode"]').clear()   #清空验证码输入框
     screenImg = 'E:\p\screenImg.png'    # 截图或验证码图片保存地址
     driver.get_screenshot_as_file(screenImg)    # 浏览器页面截屏
+    time.sleep(1)
 
     # 定位验证码位置及大小
     location = driver.find_element_by_xpath('//*[@id="login_verifycode"]').location
@@ -28,18 +29,18 @@ while True:
     right = location['x'] + size['width']
     bottom = location['y'] + size['height']
     img = Image.open(screenImg).crop((left, top, right, bottom))
-
+    time.sleep(1)
     # 图片处理
     img = img.convert('RGBA')
     img = img.convert('L')
     img = ImageEnhance.Contrast(img)
     img = img.enhance(2.0)
     img.save(screenImg)
-
+    time.sleep(2)
     # 识别验证码
     img = Image.open(screenImg)
     code = pytesseract.image_to_string(img)
-
+    time.sleep(2)
     # 去特殊符号
     b = ''
     for i in code.strip():
@@ -47,14 +48,17 @@ while True:
         m = pattern.search(i)
         if m != None:
             b += i
-    print(b)
+
 
     # 输入验证码，提交
-    time.sleep(5)
-    driver.find_element_by_xpath('//*[@id="verifycode"]').send_keys(b)
-    time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="btnlogin"]').click()
-    time.sleep(5)
+    time.sleep(1)
+    if b != '':
+        driver.find_element_by_xpath('//*[@id="verifycode"]').send_keys(b)
+        time.sleep(1)
+        driver.find_element_by_xpath('//*[@id="btnlogin"]').click()
+        time.sleep(5)
+    else:
+        pass
 
     # 验证是否登录进系统首页,若未登陆，继续识别验证码
     if driver.current_url == 'http://192.168.3.37:8001/Home/AdminLTE':
