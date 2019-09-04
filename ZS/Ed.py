@@ -24,7 +24,6 @@ if tl == '编辑增补申请':
     print('编辑窗口标题正确')
 else:
     print('编辑窗口标题错误')
-time.sleep(1)
 
 # 进入子层 frame
 driver.switch_to.default_content()
@@ -51,18 +50,16 @@ if gw == '文员':
     print('申请岗位正确')
 else:
     print('申请岗位错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyPost"]').click()
 driver.find_element_by_xpath('//*[@id="ApplyPost-option"]/div[2]/input').send_keys('行政专员', Keys.ENTER)
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyPost-option"]/div[1]/ul/li[2]').click()
 # 编辑申请人数
-rs = driver.find_element_by_xpath('//*[@id="form1"]/div/table/tbody/tr[2]/td[4]').text
+rs = driver.find_element_by_id('ApplyNumber').get_attribute("value")
 if rs == '1':
     print('申请人数正确')
 else:
     print('申请人数错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyNumber"]').clear()
 driver.find_element_by_xpath('//*[@id="ApplyNumber"]').send_keys('2')
 time.sleep(1)
@@ -72,45 +69,35 @@ if sqlx == '岗位新增':
     print('申请类型正确')
 else:
     print('申请类型错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyType"]').click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyType-option"]/div/ul/li[3]').click()
 time.sleep(1)
 # 编辑期望到职时间
-dzsj = driver.find_element_by_xpath('//*[@id="ExpectEntryDate"]').text
-time.sleep(1)
+dzsj = driver.find_element_by_id('ExpectEntryDate').get_attribute("value")
 if dzsj == '2019-09-15':
     print('期望到职时间正确')
 else:
     print('期望到职时间错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ExpectEntryDate"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ExpectEntryDate"]').send_keys('2019-09-28')
 time.sleep(1)
 # 编辑薪酬范围
-xcfw = driver.find_element_by_xpath('//*[@id="form1"]/div/table/tbody/tr[4]/td[2]').text
-time.sleep(1)
+xcfw = driver.find_element_by_id('SalaryRange').get_attribute("value")
 if xcfw == '5000-10000':
     print('薪酬范围正确')
 else:
     print('薪酬范围错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="SalaryRange"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="SalaryRange"]').send_keys('8k-10k')
 time.sleep(1)
 # 编辑申请理由
-sqly = driver.find_element_by_xpath('//*[@id="form1"]/div/table/tbody/tr[4]/td[4]').text
-time.sleep(1)
+sqly = driver.find_element_by_id('ApplyReason').get_attribute("value")
 if sqly == '人手不足，急需增派':
     print('申请理由正确')
 else:
     print('申请理由错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyReason"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyReason"]').send_keys('离职增补')
 time.sleep(1)
 # 编辑性别要求
@@ -119,7 +106,6 @@ if xbyq == '女':
     print('性别要求正确')
 else:
     print('性别要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplySex"]').click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplySex-option"]/div/ul/li[1]').click()
@@ -130,7 +116,6 @@ if xlyq == '大专':
     print('学历要求正确')
 else:
     print('学历要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyEducation"]').click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyEducation-option"]/div[2]/input').send_keys('本科', Keys.ENTER)
@@ -138,27 +123,21 @@ time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyEducation-option"]/div[1]/ul/li[2]').click()
 time.sleep(1)
 # 编辑年龄
-nl = driver.find_element_by_xpath('//*[@id="ApplyAgeExplain"]').text
-time.sleep(1)
+nl = driver.find_element_by_id('ApplyAgeExplain').get_attribute("value")
 if nl == '25':
     print('年龄要求正确')
 else:
     print('年龄要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyAgeExplain"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyAgeExplain"]').send_keys('23')
 time.sleep(1)
 # 编辑专业要求
-zy = driver.find_element_by_xpath('//*[@id="ApplyProfessionalExplain"]').text
-time.sleep(1)
+zy = driver.find_element_by_id('ApplyProfessionalExplain').get_attribute("value")
 if zy == '行政相关':
     print('专业要求正确')
 else:
     print('专业要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalExplain"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalExplain"]').send_keys('人力资源相关')
 time.sleep(1)
 # 编辑工作经验要求
@@ -167,7 +146,6 @@ if gzjy == '有要求':
     print('工作经验要求正确')
 else:
     print('工作经验要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyWorkExperience"]').click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyWorkExperience-option"]/div/ul/li[1]').click()
@@ -178,67 +156,52 @@ if zc == '无要求':
     print('职称要求正确')
 else:
     print('职称要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalTitle"]').click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalTitle-option"]/div/ul/li[3]').click()
 time.sleep(1)
 # 编辑职业资格证书要求
-zs = driver.find_element_by_xpath('//*[@id="ApplyProfessionalCertificateExplain"]').text
-time.sleep(1)
+zs = driver.find_element_by_id('ApplyProfessionalCertificateExplain').get_attribute("value")
 if zs == '秘书证':
     print('证书要求正确')
 else:
     print('证书要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalCertificateExplain"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalCertificateExplain"]').send_keys('人力资源相关证书')
 time.sleep(1)
 # 编辑专业技能要求
-zyjn = driver.find_element_by_xpath('//*[@id="ApplyProfessionalSkillsExplain"]').text
-time.sleep(1)
+zyjn = driver.find_element_by_id('ApplyProfessionalSkillsExplain').get_attribute("value")
 if zyjn == '熟悉办公自动化相关软件':
     print('专业技能要求正确')
 else:
     print('专业技能要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalSkillsExplain"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyProfessionalSkillsExplain"]').send_keys('熟悉办公软件')
 time.sleep(1)
 # 编辑外语要求
-wy = driver.find_element_by_xpath('//*[@id="ApplyForeignLanguageExplain"]').text
-time.sleep(1)
+wy = driver.find_element_by_id('ApplyForeignLanguageExplain').get_attribute("value")
 if wy == '英语四级以上':
     print('外语要求正确')
 else:
     print('外语要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyForeignLanguageExplain"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyForeignLanguageExplain"]').send_keys('熟悉简单口语即可')
 time.sleep(1)
 # 编辑计算机要求
-jsj = driver.find_element_by_xpath('//*[@id="ApplyComputerExplain"]').text
-time.sleep(1)
+jsj = driver.find_element_by_id('ApplyComputerExplain').get_attribute("value")
 if jsj == '计算机二级以上':
     print('计算机要求正确')
 else:
     print('计算机要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyComputerExplain"]').clear()
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyComputerExplain"]').send_keys('熟悉常用办公软件即可')
 time.sleep(1)
 # 编辑其他要求
-qt = driver.find_element_by_xpath('//*[@id="ApplyOthersExplain"]').text
-time.sleep(1)
+qt = driver.find_element_by_id('ApplyOthersExplain').get_attribute("value")
 if qt == '形象气质俱佳者优先':
     print('其他要求正确')
 else:
     print('其他要求错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyOthers"]').click()
 time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ApplyOthers-option"]/div/ul/li[1]').click()
@@ -252,13 +215,11 @@ time.sleep(1)
 driver.switch_to.default_content()
 driver.switch_to.frame(driver.find_element_by_id('Form'))  #第一层
 time.sleep(1)
-bt = driver.find_element_by_xpath('//*[@id="CustomName"]').text
-time.sleep(1)
+bt = driver.find_element_by_id('CustomName').get_attribute("value")
 if bt == '人力-文员增补':
     print('标题正确')
 else:
     print('标题错误')
-time.sleep(1)
 driver.find_element_by_xpath('//*[@id="CustomName"]').clear()
 driver.find_element_by_xpath('//*[@id="CustomName"]').send_keys('行政专员_离职增补')
 time.sleep(1)
@@ -266,8 +227,9 @@ time.sleep(1)
 driver.find_element_by_xpath('//*[@id="ProcessInfo"]/table/tbody/tr[6]/td/div[2]').click()
 time.sleep(1)
 # 修改备注
-bz = driver.find_element_by_xpath('//*[@id="Description"]').text
+bz = driver.find_element_by_xpath('//*[@id="Description"]').get_attribute("value")
 if bz == '这是总部职能中心，人力资源部的文员增补申请。':
+    driver.find_element_by_xpath('//*[@id="Description"]').clear()
     driver.find_element_by_xpath('//*[@id="Description"]').send_keys\
         ('这是总部职能中心，人力资源部的行政人员的离职增补申请。')
 time.sleep(1)
