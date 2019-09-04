@@ -143,6 +143,7 @@ time.sleep(1)
 driver.find_element_by_xpath('//*[@id="btn_finish"]').click()
 time.sleep(1)
 
+print('------------保存草稿后表单信息验证：------------')
 # 回到父层
 driver.switch_to.parent_frame()
 # 进入子层 frame
