@@ -234,9 +234,9 @@ if bz == '这是总部职能中心，人力资源部的文员增补申请。':
         ('这是总部职能中心，人力资源部的行政人员的离职增补申请。')
 time.sleep(1)
 # 完成提交
-#driver.find_element_by_xpath('//*[@id="btn_finish"]').click()
+driver.find_element_by_xpath('//*[@id="btn_finish"]').click()
 
-'''
+# 验证编辑结果
 # 申请人数
 driver.find_element_by_xpath('//*[@id="ApplyNumber"]').send_keys('1')
 time.sleep(1)
@@ -319,8 +319,6 @@ driver.find_element_by_xpath('//*[@id="ApplyOthers-option"]/div/ul/li[2]').click
 driver.find_element_by_xpath('//*[@id="ApplyOthersExplain"]').send_keys('形象气质俱佳者优先')
 time.sleep(1)
 
-
-'''
 
 
 
